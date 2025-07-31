@@ -106,6 +106,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector3 currentRespawnPoint;
     public int lives;
+    public GameObject GameController;
 
     public enum MovementState
     {
@@ -623,6 +624,8 @@ public class PlayerMovement : MonoBehaviour
     public void Die()
     {
         lives -= 1;
+        var GameContollerScript = GameController.GetComponent<GameControl>();
+        GameContollerScript.timer -= GameContollerScript.deathTimerLoss;
         rb.velocity = Vector3.zero;
         this.transform.position = currentRespawnPoint;
     }

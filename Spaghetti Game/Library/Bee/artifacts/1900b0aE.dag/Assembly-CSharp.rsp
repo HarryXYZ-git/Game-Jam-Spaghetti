@@ -363,6 +363,7 @@
 "Assets/PlayerControls.cs"
 "Assets/Scripts/Checkpoint.cs"
 "Assets/Scripts/DeathTerrain.cs"
+"Assets/Scripts/GameControl.cs"
 "Assets/Scripts/MoveCamera.cs"
 "Assets/Scripts/PlayerMovement.cs"
 -langversion:9.0
