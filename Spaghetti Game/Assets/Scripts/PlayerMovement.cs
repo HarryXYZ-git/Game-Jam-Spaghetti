@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Sensitivity Settings")]
     public float sensX;
     public float sensY;
+    public int camClampDegrees;
 
     [SerializeField] private GameObject playerObject;
 
@@ -93,6 +94,8 @@ public class PlayerMovement : MonoBehaviour
     public MovementState state;
 
     private GameObject chargeJumpEffect;
+
+    [Header("Miscelaneous")]
     public Rigidbody rb;
     public GameObject playerCam;
     
@@ -100,6 +103,9 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 cameraInput;
 
     public PlayerControls playerInput;
+
+    public Vector3 currentRespawnPoint;
+    public int lives;
 
     public enum MovementState
     {
@@ -325,7 +331,7 @@ public class PlayerMovement : MonoBehaviour
         yRotation += camX;
 
         xRotation -= camY;
-        xRotation = Mathf.Clamp(xRotation, -45, 45);
+        xRotation = Mathf.Clamp(xRotation, -camClampDegrees, camClampDegrees);
 
         playerCam.transform.parent.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
         playerObject.transform.rotation = Quaternion.Euler(0f, yRotation, 0f);
@@ -612,5 +618,12 @@ public class PlayerMovement : MonoBehaviour
     public void OnLook(InputValue camInput)
     {
         cameraInput = camInput.Get<Vector2>();
+    }
+
+    public void Die()
+    {
+        lives -= 1;
+        rb.velocity = Vector3.zero;
+        this.transform.position = currentRespawnPoint;
     }
 }
