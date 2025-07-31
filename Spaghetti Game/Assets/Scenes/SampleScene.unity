@@ -1670,8 +1670,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1495248587}
-  - component: {fileID: 1495248586}
   - component: {fileID: 1495248588}
+  - component: {fileID: 1495248589}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1679,20 +1679,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1495248586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1495248585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a4a19c233a59a54b8a24db7b6896479, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timer: 300
-  deathTimerLoss: 5
 --- !u!4 &1495248587
 Transform:
   m_ObjectHideFlags: 0
@@ -1804,6 +1790,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1495248589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495248585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51a159f8bc96f204791dafef3f2a004d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1516679518
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,6 +2055,7 @@ GameObject:
   - component: {fileID: 1904162032}
   - component: {fileID: 1904162031}
   - component: {fileID: 1904162030}
+  - component: {fileID: 1904162035}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Interactable
@@ -2162,6 +2161,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1904162035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904162029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc7959f863d3a14081a62d65768b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
