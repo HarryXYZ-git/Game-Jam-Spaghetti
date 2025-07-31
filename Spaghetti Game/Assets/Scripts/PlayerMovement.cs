@@ -97,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject playerCam;
     
     public Vector2 movementInput;
+    public Vector2 cameraInput;
 
     public PlayerControls playerInput;
 
@@ -313,6 +314,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         HandleMovement(movementInput);
+        HandleCamera(cameraInput);
     }
 
     public void HandleCamera(Vector2 cameraInput)
@@ -325,7 +327,7 @@ public class PlayerMovement : MonoBehaviour
         xRotation -= camY;
         xRotation = Mathf.Clamp(xRotation, -45, 45);
 
-        playerCam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        playerCam.transform.parent.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
         playerObject.transform.rotation = Quaternion.Euler(0f, yRotation, 0f);
 
     }
@@ -605,5 +607,10 @@ public class PlayerMovement : MonoBehaviour
         {
             HandleJump();
         }
+    }
+
+    public void OnLook(InputValue camInput)
+    {
+        cameraInput = camInput.Get<Vector2>();
     }
 }
