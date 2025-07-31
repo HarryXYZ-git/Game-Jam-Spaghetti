@@ -611,7 +611,7 @@ public class PlayerMovement : MonoBehaviour
         {
             HandleJump();
         }
-        else if(hasDoubleJumped)
+        else if(!hasDoubleJumped)
         {
             HandleJump();
         }
