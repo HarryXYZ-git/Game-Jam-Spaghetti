@@ -106,6 +106,8 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector3 currentRespawnPoint;
     public int lives;
+    public GameObject GameController;
+    public GameObject nearbyInteractable;
 
     public enum MovementState
     {
@@ -609,7 +611,7 @@ public class PlayerMovement : MonoBehaviour
         {
             HandleJump();
         }
-        else if(hasDoubleJumped)
+        else if(!hasDoubleJumped)
         {
             HandleJump();
         }
@@ -623,7 +625,34 @@ public class PlayerMovement : MonoBehaviour
     public void Die()
     {
         lives -= 1;
+        var GameContollerScript = GameController.GetComponent<GameControl>();
+        GameContollerScript.timer -= GameContollerScript.deathTimerLoss;
         rb.velocity = Vector3.zero;
         this.transform.position = currentRespawnPoint;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Interactable")
+        {
+            nearbyInteractable = other.gameObject;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject == nearbyInteractable)
+        {
+            nearbyInteractable = null;
+        }
+    }
+
+    public void OnInteract()
+    {
+        //Debug.Log("Interact Test");
+        if (nearbyInteractable != null)
+        {
+            nearbyInteractable.GetComponent<InteractableObject>().ObjectInteraction();
+        }
     }
 }
