@@ -8,7 +8,7 @@ public class SoupColouriser : MonoBehaviour
     private float red, blue, green;
     private int theColourValue;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         theColourValue = Random.Range(1, 5);
         if(theColourValue == 1)
