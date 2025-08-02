@@ -110,6 +110,12 @@ public class PlayerMovement : MonoBehaviour
     public GameObject nearbyInteractable;
     public GameObject GameController;
 
+    public GameObject player_body;
+
+    public AudioSource source;
+    public AudioClip deathSound;
+    public AudioClip jumpSound;
+
     public enum MovementState
     {
         freeze,
@@ -194,11 +200,13 @@ public class PlayerMovement : MonoBehaviour
             if (movementDirection.x != 0 || movementDirection.z != 0)
             {
                 //components.animationManager.toggleWalkingBool(true);
+                player_body.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
             }
 
             else
             {
                 //components.animationManager.toggleWalkingBool(false);
+                player_body.transform.localEulerAngles = new Vector3(0.0f, 90.0f, 0.0f);
             }
         }
 
@@ -266,7 +274,7 @@ public class PlayerMovement : MonoBehaviour
         SpeedControl();
 
         //isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, groundMask);
-        isGrounded = Physics.SphereCast(transform.position, 0.25f, Vector3.down, out RaycastHit Hit, groundMask);
+        isGrounded = Physics.SphereCast(transform.position, 0.55f, Vector3.down, out RaycastHit Hit, groundMask);
         //Gizmos.DrawWireSphere(transform.position, 0.25f);
         
         if (isGrounded)
@@ -442,6 +450,7 @@ public class PlayerMovement : MonoBehaviour
         {
             crouchPressed = false;
             Jump();
+            source.PlayOneShot(jumpSound);
         }
 
         Invoke(nameof(ResetJump), jumpCooldown);
@@ -612,7 +621,7 @@ public class PlayerMovement : MonoBehaviour
         {
             HandleJump();
         }
-        else if(hasDoubleJumped)
+        else if(!hasDoubleJumped)
         {
             HandleJump();
         }
@@ -626,6 +635,7 @@ public class PlayerMovement : MonoBehaviour
     public void Die()
     {
         lives -= 1;
+        source.PlayOneShot(deathSound);
         var GameContollerScript = GameController.GetComponent<GameControl>();
         GameContollerScript.timer -= GameContollerScript.deathTimerLoss;
         rb.velocity = Vector3.zero;
