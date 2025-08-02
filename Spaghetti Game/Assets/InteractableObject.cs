@@ -6,9 +6,9 @@ public class InteractableObject : MonoBehaviour
 {
     public GameControl GameController;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        GameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameControl>();
     }
 
     // Update is called once per frame

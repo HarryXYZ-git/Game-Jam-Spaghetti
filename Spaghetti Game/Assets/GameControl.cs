@@ -14,6 +14,8 @@ public class GameControl : MonoBehaviour
     public HappinessSlider happiness;
     public float customerAngryTimer;
     public List<GameObject> interactableObjects;
+
+    public int Score;
     // Start is called before the first frame update
     private void Start()
     {
@@ -56,6 +58,7 @@ public class GameControl : MonoBehaviour
         {
             Debug.Log("Victory Lad");
             happinessMultiplierContainer.happinessContainer.happinessMultiplier += 2.0f;
+            ScoreContainer.scoreContainer.score += 100;
             //happinessMultiplierStorage.GetComponent<happinessMultiplierContainer>().happinessMultiplier += 2.0f;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
