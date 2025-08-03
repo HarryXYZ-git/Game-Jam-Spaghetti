@@ -637,7 +637,7 @@ public class PlayerMovement : MonoBehaviour
         lives -= 1;
         source.PlayOneShot(deathSound);
         var GameContollerScript = GameController.GetComponent<GameControl>();
-        GameContollerScript.timer -= GameContollerScript.deathTimerLoss;
+        GameContollerScript.timer -= GameContollerScript.deathTimerLoss * happinessMultiplierContainer.happinessContainer.happinessMultiplier;
         rb.velocity = Vector3.zero;
         this.transform.position = currentRespawnPoint;
     }

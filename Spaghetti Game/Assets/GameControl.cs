@@ -84,6 +84,7 @@ public class GameControl : MonoBehaviour
         if (interactableObjects.Contains(removedObject))
         {
             interactableObjects.Remove(removedObject);
+            timer += 10.0f;
         }
     }
 
